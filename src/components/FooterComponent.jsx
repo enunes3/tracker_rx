@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 
 import '../App.css'
 
-
-{/* ADDDDD FOOOOTER */}
 class FooterComponent extends Component {
     render(){
       return (
         <footer className = "footer">
-            <span className = "text-muted">This App .......</span>
+            <span className = "text-muted">For Educational Purposes</span>
         </footer>
       );
     }

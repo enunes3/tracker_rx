@@ -6,9 +6,10 @@ class RxListComponent extends Component {
         this.state ={
             todo: 
             [
-                {id: 1, description : 'rx1', done:false, targetDate: new Date()},
-                {id: 2, description : 'rx2', done:false, targetDate: new Date()},
-                {id: 3, description : 'rx3', done:false, targetDate: new Date()},
+                {id: 1, rxName: 'rxName', dose: '50mg', quantity: '2', targetDate: new Date(), notes: ''},
+                {id: 2, rxName: 'rx2Name', dose: '', quantity: '0.5', targetDate: new Date(), notes: ''},
+                {id: 3, rxName: 'rx3Name', dose: '', quantity: '1', targetDate: new Date(), notes: 'migraine'},
+                //done:false, 
             ]
         }
     }
@@ -21,21 +22,28 @@ class RxListComponent extends Component {
          <table className = "table">
              <thead>
                  <tr>
-                     <th>id</th>
-                     <th>description</th>
-                     <th>is it done?</th>
-                     <th>date</th>   
+                     {/* <th>id</th> */}
+                     <th>Prescription Name</th>
+                     <th>Dosage</th>
+                     <th>Quantity</th>
+                     <th>Date</th> 
+                     <th>Notes</th>
+                     {/* <th>isdone</th>  */}
                  </tr>
              </thead>
              <tbody>
                  {
                      this.state.todo.map (
                          todo => 
-                            <tr key = {todo.id}>
-                                {/* <td>{todo.id}</td> */}
-                                <td>{todo.description}</td>
-                                <td>{todo.done.toString()}</td>
+                             <tr key = {todo.id}>
+                            {/*<tr>
+                                <td>{todo.id}</td>*/}
+                                <td>{todo.rxName}</td>
+                                <td>{todo.dose}</td>
+                                <td>{todo.quantity}</td>
                                 <td>{todo.targetDate.toString()}</td>
+                                <td>{todo.notes}</td>
+                                {/* <td>{todo.done.toString()}</td> */}
                             </tr>
                      )
                  }
