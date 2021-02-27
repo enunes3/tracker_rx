@@ -1,58 +1,112 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class RxListComponent extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state ={
-            todo: 
-            [
-                {id: 1, rxName: 'rxName', dose: '50mg', quantity: '2', targetDate: new Date(), notes: ''},
-                {id: 2, rxName: 'rx2Name', dose: '', quantity: '0.5', targetDate: new Date(), notes: ''},
-                {id: 3, rxName: 'rx3Name', dose: '', quantity: '1', targetDate: new Date(), notes: 'migraine'},
-                //done:false, 
-            ]
+
+        this.state = {
+            prescriptions : []
         }
     }
 
-    render(){
-      return (
-        <div >
-         <h1> RxListComponent </h1> 
-         <div className = "container">
-         <table className = "table">
-             <thead>
-                 <tr>
-                     {/* <th>id</th> */}
-                     <th>Prescription Name</th>
-                     <th>Dosage</th>
-                     <th>Quantity</th>
-                     <th>Date</th> 
-                     <th>Notes</th>
-                     {/* <th>isdone</th>  */}
-                 </tr>
-             </thead>
-             <tbody>
-                 {
-                     this.state.todo.map (
-                         todo => 
-                             <tr key = {todo.id}>
-                            {/*<tr>
-                                <td>{todo.id}</td>*/}
-                                <td>{todo.rxName}</td>
-                                <td>{todo.dose}</td>
-                                <td>{todo.quantity}</td>
-                                <td>{todo.targetDate.toString()}</td>
-                                <td>{todo.notes}</td>
-                                {/* <td>{todo.done.toString()}</td> */}
-                            </tr>
-                     )
-                 }
-             </tbody> 
-            </table>
-         </div>
-        </div>
-      );
-    }
-  }
+    render() {
+        return (
+            <div>
+                <h2 className = "text-center">List of Prescriptions</h2>
+                    <div className = "row">
+                        <table className = "table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Medication Name</th>
+                                    <th>Dosage</th>
+                                    <th>Quantity</th>
+                                    <th>Notes</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
 
-  export default RxListComponent;
+                            <tbody>
+                                {
+                                    this.state.prescriptions.map(
+                                        prescription =>
+                                            <tr key = {prescription.id}>
+                                                <td> {prescription.rx_name} </td>
+                                                <td> {prescription.dosage} </td>
+                                                <td> {prescription.quantity} </td>
+                                                <td> {prescription.notes} </td>
+                                            </tr>
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default RxListComponent;
+
+// import React, { Component } from 'react';
+// class RxListComponent extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             rx_name : '',
+//             dosage : '',
+//             quantity: '',
+//             notes: ''
+//         };
+
+//         handleChange = ({ target }) => {
+//             this.setState({ [target.name]: target.value });
+//          };
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <h2>List of Prescriptions</h2>
+
+//                 <form>
+//                     < input 
+//                         type = "text"
+//                         name = "rx_name"
+//                         placeholder = "Prescription Name"
+//                         value={this.state.rx_name}
+//                         onChange={this.handleChange}    
+//                     />
+
+//                     < input 
+//                         type = "text"
+//                         name = "dosage"
+//                         placeholder = "Dosage"
+//                         value={this.state.dosage}
+//                         onChange={this.handleChange} 
+//                     />
+//                     <label htmlFor = "quantity-select">Quantity</label>
+//                         <select 
+//                             value={this.state.dosage} 
+//                             onChange={this.handleChange} 
+//                             name="quantity" 
+//                             id="quantity-select">
+//                                 <option value="0.5">0.5 capsule</option>
+//                                 <option value="1">1 capsule</option>
+//                                 <option value="1.5">1.5 capsules</option>
+//                                 <option value="2">2 capsules</option>
+//                                 <option value="2.5">2.5 capsules</option>
+//                                 <option value="3">3 capsules</option>
+//                         </select>
+//                     < input 
+//                         type = "text"
+//                         name = "notes"
+//                         placeholder = "Notes"
+//                         value={this.state.notes}
+//                         onChange={this.handleChange}
+//                     />
+//                     <button type = "submit">Submit</button>
+//                 </form>
+//             </div>
+//             );
+//     }
+// }
