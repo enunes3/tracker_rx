@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PrescriptionService from '../services.js/PrescriptionService'
 
 class RxListComponent extends Component {
     constructor(props) {
@@ -7,6 +8,12 @@ class RxListComponent extends Component {
         this.state = {
             prescriptions : []
         }
+    }
+
+    componentDidMount() {
+        PrescriptionService.getPrescriptions().then((res) => {
+            this.setState({ prescriptions : res.data});
+        });
     }
 
     render() {
