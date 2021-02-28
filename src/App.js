@@ -14,6 +14,7 @@ import RxListComponent from './components/RxListComponent'
 import ErrorComponent from './components/ErrorComponent'
 import HeaderComponent from './components/HeaderComponent'
 import FooterComponent from './components/FooterComponent'
+import AddRxComponent from './components/AddRxComponent';
 
 
 
@@ -24,9 +25,14 @@ class App extends Component {
 
         <Router>
           <HeaderComponent />
-            <Switch>
+            <Switch> {/*localhost:3000/add-prescription <Route path = "/add-prescription" component = {AddRxComponent} /> */}
               <Route path = "/" exact component = {LoginComponent} />
               <Route path = "/login" component = {LoginComponent} />
+
+              {/*CHECK TO SEE IF THIS WORKS */}
+              <Route path = "/add-prescription" component= {AddRxComponent} />
+
+
               <AuthenticatedRoute path = "/welcome/:name" component = {WelcomeComponent} />
               <AuthenticatedRoute path = "/rxlist" component = {RxListComponent} />
               <AuthenticatedRoute path = "/logout" component = {LogoutComponent} />

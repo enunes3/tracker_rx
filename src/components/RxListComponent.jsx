@@ -8,6 +8,7 @@ class RxListComponent extends Component {
         this.state = {
             prescriptions : []
         }
+        this.addPrescription = this.addPrescription.bind(this);
     }
 
     componentDidMount() {
@@ -16,10 +17,17 @@ class RxListComponent extends Component {
         });
     }
 
+    addPrescription() {
+       this.props.history.push ('/add-prescription'); 
+    }
+
     render() {
         return (
             <div>
                 <h2 className = "text-center">List of Prescriptions</h2>
+                    <div className = "row">
+                        <button className = "btn btn-primary" onClick = {this.addPrescription}>Add Prescription</button>
+                    </div>
                     <div className = "row">
                         <table className = "table table-striped table-bordered">
                             <thead>
