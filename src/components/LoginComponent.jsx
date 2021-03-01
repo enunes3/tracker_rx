@@ -77,9 +77,9 @@ loginClicked(){
 export default LoginComponent;
 
 
- {/* if condition true, show what's in the <div /> */}
-         {/* <ShowInvalidCredentials hasLoginFailed = {this.state.hasLoginFailed} /> */}
-         {/* <ShowLoginSuccessMessage showSuccessMessage = {this.state.showSuccessMessage} /> */}
+ {/* if condition true, show what's in the <div /> 
+          <ShowInvalidCredentials hasLoginFailed = {this.state.hasLoginFailed} /> 
+          <ShowLoginSuccessMessage showSuccessMessage = {this.state.showSuccessMessage} /> */}
 
 
 // //don't need these functions because we combined everything on lines 55 & 57

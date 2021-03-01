@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PrescriptionService from '../services.js/PrescriptionService'
+import PrescriptionService from '../services/PrescriptionService'
 
 class RxListComponent extends Component {
     constructor(props) {
@@ -11,6 +11,8 @@ class RxListComponent extends Component {
         this.addPrescription = this.addPrescription.bind(this);
     }
 
+        //promise
+        //storing res.data inside Employee array
     componentDidMount() {
         PrescriptionService.getPrescriptions().then((res) => {
             this.setState({ prescriptions : res.data});
@@ -46,7 +48,7 @@ class RxListComponent extends Component {
                                     this.state.prescriptions.map(
                                         prescription =>
                                             <tr key = {prescription.id}>
-                                                <td> {prescription.rxName} </td>
+                                                <td> {prescription.rx_name} </td>
                                                 <td> {prescription.dosage} </td>
                                                 <td> {prescription.quantity} </td>
                                                 <td> {prescription.notes} </td>
