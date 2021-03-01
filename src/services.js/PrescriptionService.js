@@ -6,6 +6,9 @@ class PrescriptionService {
     getPrescriptions(){
         return axios.get(PRESCRIPTION_API_BASE_URL);
     }
+    createPrescription(prescription) {
+        return axios.post(PRESCRIPTION_API_BASE_URL, prescription);
+    }
 }
 
 export default new PrescriptionService();

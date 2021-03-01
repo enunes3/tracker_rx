@@ -38,7 +38,8 @@ loginClicked(){
   if (this.state.username === "admin" && this.state.password === "123"){
     AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password); 
     // console.log("Successful")
-    this.props.history.push(`/welcome/${this.state.username}`)
+    this.props.history.push(`/welcome`)
+    // this.props.history.push(`/welcome/${this.state.username}`)
     // this.setState({showSuccessMessage: true})
     // this.setState({hasLoginFailed: false})
   } 

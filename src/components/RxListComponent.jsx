@@ -35,6 +35,7 @@ class RxListComponent extends Component {
                                     <th>Medication Name</th>
                                     <th>Dosage</th>
                                     <th>Quantity</th>
+                                    {/*<th>Date & Time</th>*/}
                                     <th>Notes</th>
                                     <th>Actions</th>
                                 </tr>
@@ -45,7 +46,7 @@ class RxListComponent extends Component {
                                     this.state.prescriptions.map(
                                         prescription =>
                                             <tr key = {prescription.id}>
-                                                <td> {prescription.rx_name} </td>
+                                                <td> {prescription.rxName} </td>
                                                 <td> {prescription.dosage} </td>
                                                 <td> {prescription.quantity} </td>
                                                 <td> {prescription.notes} </td>
@@ -56,7 +57,7 @@ class RxListComponent extends Component {
                         </table>
                 </div>
             </div>
-        )
+        );
     }
 }
 

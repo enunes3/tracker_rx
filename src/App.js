@@ -18,6 +18,7 @@ import AddRxComponent from './components/AddRxComponent';
 
 
 
+
 class App extends Component {
   render(){
     return (
@@ -32,12 +33,12 @@ class App extends Component {
               {/*CHECK TO SEE IF THIS WORKS */}
               <Route path = "/add-prescription" component= {AddRxComponent} />
 
-
-              <AuthenticatedRoute path = "/welcome/:name" component = {WelcomeComponent} />
+              <AuthenticatedRoute path = "/welcome" component = {WelcomeComponent} />
               <AuthenticatedRoute path = "/rxlist" component = {RxListComponent} />
               <AuthenticatedRoute path = "/logout" component = {LogoutComponent} />
               {/* <Route path = "/about" component = {AboutComponent} /> */}
               <Route component = {ErrorComponent} />
+              {/* <Route component = {AddRxComponent} /> */}
             </Switch>
           <FooterComponent />
         </Router>
