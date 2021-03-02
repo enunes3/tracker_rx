@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PrescriptionService from '../services/PrescriptionService'
+import '../App.css'
 
- class AddRxComponent extends Component {
+ class UpdateRxComponent extends Component {
      constructor(props) {
          super(props)
 
          this.state = {
-            // id: this.props.match.params.id,
+            id: this.props.match.params.id,
             rx_name: '',
             dosage : '',
             quantity: '',
@@ -17,17 +18,28 @@ import PrescriptionService from '../services/PrescriptionService'
         this.changeDosageHandler = this.changeDosageHandler.bind(this);
         this.changeQuantityHandler = this.changeQuantityHandler.bind(this);
         this.changeNotesHandler = this.changeNotesHandler.bind(this);
-        this.savePrescription = this.savePrescription.bind(this);
+        this.updatePrescription = this.updatePrescription.bind(this);
+     }
+        //receiving a response from the data and setting it to the State
+     componentDidMount(){
+        PrescriptionService.getPrescriptionById(this.state.id).then( (res) => {
+            let prescription = res.data;
+            this.setState({
+                rx_name: prescription.rx_name,
+                dosage: prescription.dosage, 
+                quantity: prescription.quantity, 
+                notes: prescription.notes
+            });
+        });
      }
 
-     savePrescription (event) {
+     updatePrescription (event) {
         event.preventDefault(); 
         let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes};
         console.log('prescription =>' + JSON.stringify(prescription));
-
-        PrescriptionService.createPrescription(prescription).then(res => {
+        PrescriptionService.updatePrescription(prescription, this.state.id).then(res =>{
             this.props.history.push('/rxlist');
-        });
+        })
      }
 
      changeRxNameHandle(event) {
@@ -56,7 +68,7 @@ import PrescriptionService from '../services/PrescriptionService'
             <div className = "container">
                 <div className = "row">
                     <div className = "card col-md-6 offset-md-3 offset-md-3">
-                    <h3 className = "text-center">Add Prescription</h3>
+                    <h3 className = "text-center">Update Prescription</h3>
                         <div className = "card-body">
                             <form>
                                 <div className = "form-group">
@@ -93,13 +105,13 @@ import PrescriptionService from '../services/PrescriptionService'
                                         <br></br>
                                             < input 
                                                 placeholder = "Notes"
-                                                name = "notes"
+                                                className = "notes"
                                                 value={this.state.notes}
                                                 onChange={this.changeNotesHandler}    
                                             /> 
                                 </div>
-                                <button className = "btn btn-success" onClick = {this.savePrescription}>Save</button>   
-                                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>       
+                                <button className = "btn btn-success" onClick = {this.updatePrescription}>Save</button>      
+                                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>    
                                 </div> 
                             </form>
                         </div>
@@ -113,4 +125,4 @@ import PrescriptionService from '../services/PrescriptionService'
 
 
 
-export default AddRxComponent;
+export default UpdateRxComponent;

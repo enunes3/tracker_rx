@@ -9,6 +9,15 @@ class PrescriptionService {
     createPrescription(prescription) {
         return axios.post(PRESCRIPTION_API_BASE_URL, prescription);
     }
+    getPrescriptionById(prescriptionId){
+        return axios.get(PRESCRIPTION_API_BASE_URL + '/' + prescriptionId);
+    }
+    updatePrescription(prescription, prescriptionId){
+        return axios.put(PRESCRIPTION_API_BASE_URL + '/' + prescriptionId, prescription);
+    }
+    deletePrescription(prescriptionId){
+        return axios.delete(PRESCRIPTION_API_BASE_URL + '/' + prescriptionId)
+    }
 }
 
 export default new PrescriptionService();

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PrescriptionService from '../services/PrescriptionService'
+import '../App.css'
 
 class RxListComponent extends Component {
     constructor(props) {
@@ -9,6 +10,20 @@ class RxListComponent extends Component {
             prescriptions : []
         }
         this.addPrescription = this.addPrescription.bind(this);
+        this.editPrescription = this.editPrescription.bind(this);
+        this.deletePrescription = this.deletePrescription.bind(this);
+    }
+
+    deletePrescription(id){
+        //rest api call
+        window.confirm("Are you positive you would like to delete this prescription?")
+        PrescriptionService.deletePrescription(id).then( res=> {
+            this.setState({prescriptions: this.state.prescriptions.filter(prescription => prescription.id !== id)});
+        });
+        
+    }
+    editPrescription(id){
+        this.props.history.push (`/update-prescription/${id}`); 
     }
 
         //promise
@@ -28,8 +43,9 @@ class RxListComponent extends Component {
             <div>
                 <h2 className = "text-center">List of Prescriptions</h2>
                     <div className = "row">
-                        <button className = "btn btn-primary" onClick = {this.addPrescription}>Add Prescription</button>
+                        <button style={{marginLeft: "30px"}} className = "btn btn-primary" onClick = {this.addPrescription}>Add Prescription</button>
                     </div>
+                    <br></br>
                     <div className = "row">
                         <table className = "table table-striped table-bordered">
                             <thead>
@@ -52,6 +68,10 @@ class RxListComponent extends Component {
                                                 <td> {prescription.dosage} </td>
                                                 <td> {prescription.quantity} </td>
                                                 <td> {prescription.notes} </td>
+                                                <td> 
+                                                    <button onClick = {() => this.editPrescription(prescription.id)} className = "btn btn-info">Update</button>
+                                                    <button style={{marginLeft: "15px"}} onClick = {() => this.deletePrescription(prescription.id)} className = "btn btn-danger">Delete</button>
+                                                </td>
                                             </tr>
                                     )
                                 }
