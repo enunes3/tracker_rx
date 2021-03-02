@@ -69,7 +69,8 @@ import PrescriptionService from '../services/PrescriptionService'
                                             onChange={this.changeRxNameHandle}    
                                         /> 
                                 <div className = "form-group">
-                                    <label>Dosage</label>                                              <br></br>
+                                    <label>Dosage</label>   
+                                    <br></br>                                           
                                         < input 
                                             placeholder = "ex. 325mg"
                                             name = "dosage"
@@ -87,13 +88,11 @@ import PrescriptionService from '../services/PrescriptionService'
                                             onChange={this.changeQuantityHandler}    
                                         /> 
                                 </div>
-                                            {/*<label>Date & Time</label> */}
                                 <div className = "form-group">
                                     <label>Notes</label>
                                         <br></br>
-                                            < input 
+                                            < textarea name = "notes"
                                                 placeholder = "Notes"
-                                                name = "notes"
                                                 value={this.state.notes}
                                                 onChange={this.changeNotesHandler}    
                                             /> 

@@ -103,9 +103,8 @@ import '../App.css'
                                 <div className = "form-group">
                                     <label>Notes</label>
                                         <br></br>
-                                            < input 
+                                            < textarea name = "notes"
                                                 placeholder = "Notes"
-                                                className = "notes"
                                                 value={this.state.notes}
                                                 onChange={this.changeNotesHandler}    
                                             /> 

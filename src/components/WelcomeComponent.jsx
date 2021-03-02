@@ -12,10 +12,15 @@ import RxList from './data';
         <>
         <h1>Welcome!</h1>
           <div className = "welcome-container">
-          Welcome {this.props.match.params.name}. You can manage your prescriptions <Link to = "/rxlist">here</Link>
-          Add new prescription <Link to = "/add-prescription">here</Link>
-         
-           {/* import <AddRxComponent /> */}
+            <div className = "welcome-button">
+              
+                <Link to = "/rxlist"> Manage Prescriptions</Link>
+              
+            </div>
+            <br></br>
+            <div className = "welcome-button">
+               <Link to = "/add-prescription">Add new prescription</Link>
+            </div>
           </div>
         </>
         
