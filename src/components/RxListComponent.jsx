@@ -85,43 +85,7 @@ class RxListComponent extends Component {
 
 export default RxListComponent;
 
-// import React, { Component } from 'react';
-// class RxListComponent extends Component {
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             rx_name : '',
-//             dosage : '',
-//             quantity: '',
-//             notes: ''
-//         };
 
-//         handleChange = ({ target }) => {
-//             this.setState({ [target.name]: target.value });
-//          };
-//     }
-
-//     render(){
-//         return(
-//             <div>
-//                 <h2>List of Prescriptions</h2>
-
-//                 <form>
-//                     < input 
-//                         type = "text"
-//                         name = "rx_name"
-//                         placeholder = "Prescription Name"
-//                         value={this.state.rx_name}
-//                         onChange={this.handleChange}    
-//                     />
-
-//                     < input 
-//                         type = "text"
-//                         name = "dosage"
-//                         placeholder = "Dosage"
-//                         value={this.state.dosage}
-//                         onChange={this.handleChange} 
-//                     />
 //                     <label htmlFor = "quantity-select">Quantity</label>
 //                         <select 
 //                             value={this.state.dosage} 
@@ -135,16 +99,4 @@ export default RxListComponent;
 //                                 <option value="2.5">2.5 capsules</option>
 //                                 <option value="3">3 capsules</option>
 //                         </select>
-//                     < input 
-//                         type = "text"
-//                         name = "notes"
-//                         placeholder = "Notes"
-//                         value={this.state.notes}
-//                         onChange={this.handleChange}
-//                     />
-//                     <button type = "submit">Submit</button>
-//                 </form>
-//             </div>
-//             );
-//     }
-// }
+
