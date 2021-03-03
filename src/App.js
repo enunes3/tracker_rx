@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import './bootstrap.css'
-
-import AuthenticationService from './AuthenticationService.js'
 import AuthenticatedRoute from './AuthenticatedRoute'
-
 import LoginComponent from './components/LoginComponent'
 import LogoutComponent from './components/LogoutComponent'
 import AboutComponent from './components/AboutComponent'
@@ -31,13 +28,13 @@ class App extends Component {
               <Route path = "/login" component = {LoginComponent} />
 
               <Route path = "/about" component = {AboutComponent} />
-              <Route path = "/update-prescription:id" component= {UpdateRxComponent} />
+              <Route path = "/update-prescription/:id" component= {UpdateRxComponent} />
               <Route path = "/add-prescription/" component= {AddRxComponent} />
 
               <AuthenticatedRoute path = "/welcome" component = {WelcomeComponent} />
               <AuthenticatedRoute path = "/rxlist" component = {RxListComponent} />
               <AuthenticatedRoute path = "/logout" component = {LogoutComponent} />
-              {/* <Route path = "/about" component = {AboutComponent} /> */}
+              
               <Route component = {ErrorComponent} />
               
             </Switch>

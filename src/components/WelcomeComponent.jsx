@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 // import CreateRxComponent from './CreateRxComponent';
 // import AddRxComponent from './AddRxComponent';
 // import './RxListComponent'
-import RxList from './data';
+// import RxList from './data';
 
 
   class WelcomeComponent extends Component {

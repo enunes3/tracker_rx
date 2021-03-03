@@ -38,6 +38,8 @@ class RxListComponent extends Component {
        this.props.history.push ('/add-prescription'); 
     }
 
+    
+
     render() {
         return (
             <div>
@@ -53,7 +55,7 @@ class RxListComponent extends Component {
                                     <th>Medication Name</th>
                                     <th>Dosage</th>
                                     <th>Quantity</th>
-                                    {/*<th>Date & Time</th>*/}
+                                    <th>Date & Time</th>
                                     <th>Notes</th>
                                     <th>Actions</th>
                                 </tr>
@@ -67,9 +69,11 @@ class RxListComponent extends Component {
                                                 <td> {prescription.rx_name} </td>
                                                 <td> {prescription.dosage} </td>
                                                 <td> {prescription.quantity} </td>
+                                                <td> {prescription.date_created} </td>
                                                 <td> {prescription.notes} </td>
+
                                                 <td> 
-                                                    <button onClick = {() => this.editPrescription(prescription.id)} className = "btn btn-info">Update</button>
+                                                    <button onClick = {() => this.editPrescription(prescription.id)}  className = "btn btn-info">Update</button>
                                                     <button style={{marginLeft: "15px"}} onClick = {() => this.deletePrescription(prescription.id)} className = "btn btn-danger">Delete</button>
                                                 </td>
                                             </tr>
@@ -85,18 +89,5 @@ class RxListComponent extends Component {
 
 export default RxListComponent;
 
-
-//                     <label htmlFor = "quantity-select">Quantity</label>
-//                         <select 
-//                             value={this.state.dosage} 
-//                             onChange={this.handleChange} 
-//                             name="quantity" 
-//                             id="quantity-select">
-//                                 <option value="0.5">0.5 capsule</option>
-//                                 <option value="1">1 capsule</option>
-//                                 <option value="1.5">1.5 capsules</option>
-//                                 <option value="2">2 capsules</option>
-//                                 <option value="2.5">2.5 capsules</option>
-//                                 <option value="3">3 capsules</option>
-//                         </select>
+                   
 

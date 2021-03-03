@@ -15,7 +15,7 @@ class HeaderComponent extends Component {
             <nav className= "navbar navbar-expand-md navbar-dark bg-dark">
                 {/* <div><a href = "https://fda.org" className = "navbar-brand">Website?</a></div> */}
                 <ul className= "navbar-nav">
-                    {isUserLoggedIn && <li><Link className ="nav-link" to = "welcome/admin">Home</Link></li>}
+                    {isUserLoggedIn && <li><Link className ="nav-link" to = "/welcome">Home</Link></li>}
                     <li><Link className = "nav-link" to = "/about">About</Link></li>
                     {isUserLoggedIn && <li><Link className ="nav-link" to = "/rxlist">Prescription List</Link></li>}
                 </ul>

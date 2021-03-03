@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PrescriptionService from '../services/PrescriptionService'
 
+
  class AddRxComponent extends Component {
      constructor(props) {
          super(props)
@@ -10,19 +11,21 @@ import PrescriptionService from '../services/PrescriptionService'
             rx_name: '',
             dosage : '',
             quantity: '',
-            notes: ''
+            date_created: new Date.toLocaleString(), 
+            notes: '',
             
          }
         this.changeRxNameHandle = this.changeRxNameHandle.bind(this);
-        this.changeDosageHandler = this.changeDosageHandler.bind(this);
-        this.changeQuantityHandler = this.changeQuantityHandler.bind(this);
-        this.changeNotesHandler = this.changeNotesHandler.bind(this);
+        this.changeDosageHandle = this.changeDosageHandle.bind(this);
+        this.changeQuantityHandle = this.changeQuantityHandle.bind(this);
+        this.changeNotesHandle = this.changeNotesHandle.bind(this);
         this.savePrescription = this.savePrescription.bind(this);
      }
 
+
      savePrescription (event) {
         event.preventDefault(); 
-        let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes};
+        let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes, date_created: this.state.date_created};
         console.log('prescription =>' + JSON.stringify(prescription));
 
         PrescriptionService.createPrescription(prescription).then(res => {
@@ -33,17 +36,18 @@ import PrescriptionService from '../services/PrescriptionService'
      changeRxNameHandle(event) {
         this.setState({rx_name: event.target.value});
         // console.log(rx_name);
-        }
-    changeDosageHandler(event){
+    }
+
+    changeDosageHandle(event){
         this.setState({dosage: event.target.value});
-        }
+    }
 
-    changeQuantityHandler(event){
+    changeQuantityHandle(event){
         this.setState({quantity: event.target.value});
-        }
+    }
 
-    changeNotesHandler(event){
-            this.setState({notes: event.target.value});
+    changeNotesHandle(event){
+        this.setState({notes: event.target.value});
     }
 
     cancel() {
@@ -75,18 +79,30 @@ import PrescriptionService from '../services/PrescriptionService'
                                             placeholder = "ex. 325mg"
                                             name = "dosage"
                                             value={this.state.dosage}
-                                            onChange={this.changeDosageHandler}    
+                                            onChange={this.changeDosageHandle}    
                                         /> 
                                 </div>
                                 <div className = "form-group">
-                                    <label>Quantity</label>
+                                    <label>Quantity
                                     <br></br>
-                                        < input 
+                                        <select 
+                                            value={this.state.quantity}
+                                            onChange={this.changeQuantityHandle} 
+                                            name="quantity">
+                                                <option value="0.5">0.5 capsule</option>
+                                                <option value="1">1 capsule</option>
+                                                <option value="1.5">1.5 capsules</option>
+                                                <option value="2">2 capsules</option>
+                                                <option value="2.5">2.5 capsules</option>
+                                                <option value="3">3 capsules</option>
+                                        </select>
+                                        {/* < input 
                                             placeholder = "ex. 2"
                                             name = "quantity"
                                             value={this.state.quantity}
-                                            onChange={this.changeQuantityHandler}    
-                                        /> 
+                                            onChange={this.changeQuantityHandle}    
+                                        />  */}
+                                    </label>      
                                 </div>
                                 <div className = "form-group">
                                     <label>Notes</label>
@@ -94,7 +110,7 @@ import PrescriptionService from '../services/PrescriptionService'
                                             < textarea name = "notes"
                                                 placeholder = "Notes"
                                                 value={this.state.notes}
-                                                onChange={this.changeNotesHandler}    
+                                                onChange={this.changeNotesHandle}    
                                             /> 
                                 </div>
                                 <button className = "btn btn-success" onClick = {this.savePrescription}>Save</button>   
