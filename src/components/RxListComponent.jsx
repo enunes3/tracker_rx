@@ -15,30 +15,27 @@ class RxListComponent extends Component {
     }
 
     deletePrescription(id){
-        //rest api call
         window.confirm("Are you positive you would like to delete this prescription?")
         PrescriptionService.deletePrescription(id).then( res=> {
             this.setState({prescriptions: this.state.prescriptions.filter(prescription => prescription.id !== id)});
         });
-        
+          
     }
+        //user clicks to update rx -> bring them to '/update-prescription'
     editPrescription(id){
         this.props.history.push (`/update-prescription/${id}`); 
     }
+        //user clicks to add new rx -> bring them to '/update-prescription'
+    addPrescription() {
+        this.props.history.push ('/add-prescription'); 
+     }
 
-        //promise
-        //storing res.data inside Employee array
+        //taking the response from axios and storing the data inside the prescriptions array
     componentDidMount() {
         PrescriptionService.getPrescriptions().then((res) => {
             this.setState({ prescriptions : res.data});
         });
     }
-
-    addPrescription() {
-       this.props.history.push ('/add-prescription'); 
-    }
-
-    
 
     render() {
         return (
@@ -69,7 +66,7 @@ class RxListComponent extends Component {
                                                 <td> {prescription.rx_name} </td>
                                                 <td> {prescription.dosage} </td>
                                                 <td> {prescription.quantity} </td>
-                                                <td> {prescription.date_created} </td>
+                                                <td> {prescription.time_taken} </td>
                                                 <td> {prescription.notes} </td>
 
                                                 <td> 

@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
     render(){
       return (
         <>
-        <h1>Welcome!</h1>
+        <h1>Welcome to TrackerRx!</h1>
           <div className = "welcome-container">
             <div className = "welcome-button">
               

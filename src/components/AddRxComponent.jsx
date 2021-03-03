@@ -11,7 +11,7 @@ import PrescriptionService from '../services/PrescriptionService'
             rx_name: '',
             dosage : '',
             quantity: '',
-            date_created: new Date.toLocaleString(), 
+            time_taken: new Date().toLocaleString(), 
             notes: '',
             
          }
@@ -22,10 +22,17 @@ import PrescriptionService from '../services/PrescriptionService'
         this.savePrescription = this.savePrescription.bind(this);
      }
 
-
+    
+        // timeTaken(){
+        //     var today = new Date();
+        //     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        //     var dateTime = date+' '+time;
+        // }
+    
      savePrescription (event) {
         event.preventDefault(); 
-        let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes, date_created: this.state.date_created};
+        let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes, time_taken: this.state.time_taken};
         console.log('prescription =>' + JSON.stringify(prescription));
 
         PrescriptionService.createPrescription(prescription).then(res => {
@@ -129,3 +136,6 @@ import PrescriptionService from '../services/PrescriptionService'
 
 
 export default AddRxComponent;
+
+
+

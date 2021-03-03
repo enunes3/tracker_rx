@@ -54,10 +54,9 @@ loginClicked(){
   render() {
      return (
        <div>
+         <br></br>
          <h1>Login</h1>
         <div className = "container">
-
-
         </div>
         
          {/* if condition true, show what's in the <div /> */}

@@ -11,6 +11,7 @@ import '../App.css'
             rx_name: '',
             dosage : '',
             quantity: '',
+            //time_taken: new Date(),
             notes: ''
             
          }
@@ -20,14 +21,15 @@ import '../App.css'
         this.changeNotesHandle = this.changeNotesHandle.bind(this);
         this.updatePrescription = this.updatePrescription.bind(this);
      }
-        //receiving a response from the data and setting it to the State
+
+        //receiving a response from the data and setting it to the state
      componentDidMount(){
         PrescriptionService.getPrescriptionById(this.state.id).then( (res) => {
             let prescription = res.data;
             this.setState({
                 rx_name: prescription.rx_name,
                 dosage: prescription.dosage, 
-                quantity: prescription.quantity, 
+                quantity: prescription.quantity,
                 notes: prescription.notes
             });
         });
@@ -57,7 +59,7 @@ import '../App.css'
     changeNotesHandle(event){
             this.setState({notes: event.target.value});
     }
-
+        //user clicks cancel -> bring them to rx list
     cancel() {
         this.props.history.push('/rxlist');
     }
@@ -112,7 +114,9 @@ import '../App.css'
                                         />  */}
                                     </label>      
                                 </div>
-                                            {/*<label>Date & Time</label> */}
+
+                                    {/*<label>Date & Time</label> */}
+
                                 <div className = "form-group">
                                     <label>Notes</label>
                                         <br></br>
