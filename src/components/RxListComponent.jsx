@@ -33,7 +33,7 @@ class RxListComponent extends Component {
         //taking the response from axios and storing the data inside the prescriptions array
     componentDidMount() {
         PrescriptionService.getPrescriptions().then((res) => {
-            this.setState({ prescriptions : res.data});
+            this.setState({ prescriptions : res.data });
         });
     }
 

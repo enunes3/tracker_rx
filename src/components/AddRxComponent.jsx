@@ -21,16 +21,8 @@ import PrescriptionService from '../services/PrescriptionService'
         this.changeNotesHandle = this.changeNotesHandle.bind(this);
         this.savePrescription = this.savePrescription.bind(this);
      }
-
     
-        // timeTaken(){
-        //     var today = new Date();
-        //     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //     var dateTime = date+' '+time;
-        // }
-    
-     savePrescription (event) {
+    savePrescription (event) {
         event.preventDefault(); 
         let prescription = { rx_name: this.state.rx_name, dosage: this.state.dosage, quantity: this.state.quantity, notes: this.state.notes, time_taken: this.state.time_taken};
         console.log('prescription =>' + JSON.stringify(prescription));
@@ -40,7 +32,7 @@ import PrescriptionService from '../services/PrescriptionService'
         });
      }
 
-     changeRxNameHandle(event) {
+    changeRxNameHandle(event) {
         this.setState({rx_name: event.target.value});
         // console.log(rx_name);
     }
@@ -56,7 +48,7 @@ import PrescriptionService from '../services/PrescriptionService'
     changeNotesHandle(event){
         this.setState({notes: event.target.value});
     }
-
+    //user clicks to cancel -> bring them back to rx list
     cancel() {
         this.props.history.push('/rxlist');
     }
